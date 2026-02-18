@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PowerFit Gym</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+section{
+    padding:100px 8%;
+    min-height:100vh;
+}
+
+/* ===== NAVBAR ===== */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:linear-gradient(90deg,#ff416c,#ff4b2b);
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    color:#fff;
+    font-size:24px;
+    font-weight:700;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin:0 15px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:#fff;
+    font-weight:500;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:#000;
+}
+
+/* Hamburger */
+.menu-toggle{
+    display:none;
+    flex-direction:column;
+    cursor:pointer;
+}
+
+.menu-toggle span{
+    height:3px;
+    width:25px;
+    background:white;
+    margin:4px 0;
+    transition:0.4s;
+}
+
+/* Mobile Menu */
+@media(max-width:768px){
+    nav ul{
+        position:absolute;
+        top:70px;
+        right:-100%;
+        background:#ff416c;
+        width:200px;
+        flex-direction:column;
+        text-align:center;
+        transition:0.4s;
+        padding:20px 0;
+    }
+
+    nav ul.active{
+        right:0;
+    }
+
+    nav ul li{
+        margin:15px 0;
+    }
+
+    .menu-toggle{
+        display:flex;
+    }
+}
+
+/* ===== HOME ===== */
+#home{
+    height:100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48') no-repeat center center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+#home h1{
+    font-size:60px;
+    text-transform:uppercase;
+}
+
+#home p{
+    font-size:22px;
+    margin-top:20px;
+}
+
+/* ===== PROGRAMS ===== */
+#programs{ background:#f7f7f7; text-align:center; }
+
+.program-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:40px;
+}
+
+.program{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.4s;
+}
+
+.program img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.program:hover{
+    transform:translateY(-10px);
+}
+
+/* ===== TRAINERS ===== */
+#trainers{
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    color:white;
+    text-align:center;
+}
+
+.trainer-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    margin-top:40px;
+}
+
+.trainer{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    transition:0.4s;
+}
+
+.trainer img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    transition:0.4s;
+}
+
+.trainer:hover img{
+    transform:scale(1.1);
+}
+
+.trainer-info{
+    padding:20px;
+    color:black;
+}
+
+/* ===== MEMBERSHIP ===== */
+#membership{ background:#f7f7f7; text-align:center; }
+
+.pricing-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:30px;
+    margin-top:40px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    width:280px;
+    border-radius:10px;
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    background:linear-gradient(135deg,#43cea2,#185a9d);
+    color:white;
+}
+
+.card button{
+    padding:10px 20px;
+    border:none;
+    background:#ff416c;
+    color:white;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+/* ===== GALLERY ===== */
+#gallery{
+    background:#111;
+    color:white;
+    text-align:center;
+}
+
+.gallery-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+    margin-top:40px;
+}
+
+.gallery-container img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:10px;
+    transition:0.4s;
+}
+
+.gallery-container img:hover{
+    transform:scale(1.1);
+}
+
+/* ===== DEVELOPER ===== */
+#developer{
+    background:linear-gradient(135deg,#ff512f,#dd2476);
+    color:white;
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">PowerFit</div>
+
+    <ul id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#trainers">Trainers</a></li>
+        <li><a href="#membership">Membership</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#developer">Developer</a></li>
+    </ul>
+
+    <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<section id="home">
+    <div>
+        <h1>Welcome to PowerFit</h1>
+        <p>Transform Your Body. Transform Your Life.</p>
+    </div>
+</section>
+
+<section id="programs">
+    <h2>Our Programs</h2>
+    <div class="program-container">
+        <div class="program">
+            <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e">
+            <h3>Weight Training</h3>
+        </div>
+        <div class="program">
+            <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2">
+            <h3>Cardio Fitness</h3>
+        </div>
+        <div class="program">
+            <img src=" https://th.bing.com/th/id/OIP.W4Osg2Zi51DYGzHQnbcu7gHaEK?w=282&h=180&c=7&r=0&o=7&pid=1.7&rm=3">
+            <h3>Yoga</h3>
+        </div>
+        <div class="program">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438">
+            <h3>CrossFit</h3>
+        </div>
+    </div>
+</section>
+
+<section id="trainers">
+    <h2>Meet Our Coaches</h2>
+    <div class="trainer-container">
+        <div class="trainer">
+            <img src="https://images.unsplash.com/photo-1605296867424-35fc25c9212a">
+            <div class="trainer-info">
+                <h3>David Carter</h3>
+                <p>Strength Coach</p>
+            </div>
+        </div>
+        <div class="trainer">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSez0L35hy28-p7LnEsmxrlaDMND8QAEq2AoA&s">
+            <div class="trainer-info">
+                <h3>Sophia Miller</h3>
+                <p>Yoga Expert</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="membership">
+    <h2>Membership Plans</h2>
+    <div class="pricing-container">
+        <div class="card">
+            <h3>Basic</h3>
+            <h2>₹1,999 / month</h2>
+            <button>Join Now</button>
+        </div>
+        <div class="card">
+            <h3>Standard</h3>
+            <h2>₹3,499 / month</h2>
+            <button>Join Now</button>
+        </div>
+        <div class="card">
+            <h3>Premium</h3>
+            <h2>₹5,999 / month</h2>
+            <button>Join Now</button>
+        </div>
+    </div>
+</section>
+
+<section id="gallery">
+    <h2>Gym Gallery</h2>
+    <div class="gallery-container">
+        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b">
+        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd">
+        <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77">
+    </div>
+</section>
+
+<section id="developer">
+    <h2>Developer</h2>
+    
+    <img src="rehan.jpeg" alt="center" width="500">  
+    <p><h1>REHAN MAKRANI</h1></p>  
+    
+    <img src="umar.jpg" alt="center" width="500" >
+    <p><h1>MOHD UMAR</h1></p>
+</section>
+
+
+<script>
+const toggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+</script>
+
+</body>
+</html>
